@@ -92,33 +92,47 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
             Positioned(
               left: screenWidth * 0.08,
               top: screenHeight * 0.55,
-              child: Container(
-                width: screenWidth * 0.83,
-                height: 40,
-                padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                decoration: ShapeDecoration(
-                  color: Colors.white,
-                  shape: RoundedRectangleBorder(
-                    side: BorderSide(
-                      width: 0.20,
-                      color: const Color(0xFF8C8A8A),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Container(
+                    width: screenWidth * 0.83,
+                    height: 40,
+                    padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                    decoration: ShapeDecoration(
+                      color: Colors.white,
+                      shape: RoundedRectangleBorder(
+                        side: BorderSide(
+                          width: 0.20,
+                          color: const Color(0xFF8C8A8A),
+                        ),
+                        borderRadius: BorderRadius.circular(10),
+                      ),
                     ),
-                    borderRadius: BorderRadius.circular(10),
+                    child: TextField(
+                      controller: emailController,
+                      decoration: InputDecoration(
+                        hintText: 'Email',
+                        hintStyle: TextStyle(
+                          color: const Color(0xFF8C8A8A),
+                          fontSize: 13,
+                          fontFamily: 'Nunito',
+                          fontWeight: FontWeight.w400,
+                        ),
+                        border: InputBorder.none,
+                      ),
+                    ),
                   ),
-                ),
-                child: TextField(
-                  controller: emailController,
-                  decoration: InputDecoration(
-                    hintText: 'Email',
-                    hintStyle: TextStyle(
-                      color: const Color(0xFF8C8A8A),
-                      fontSize: 13,
+                  SizedBox(height: 6),
+                  Text(
+                    'Note: Your new password must be 6-12 characters and include uppercase, lowercase, number, and special character.',
+                    style: TextStyle(
+                      color: Colors.grey[700],
+                      fontSize: 11,
                       fontFamily: 'Nunito',
-                      fontWeight: FontWeight.w400,
                     ),
-                    border: InputBorder.none,
                   ),
-                ),
+                ],
               ),
             ),
             // Send Code Button
@@ -153,11 +167,12 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
               top: screenHeight * 0.64,
               child: GestureDetector(
                 onTap: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => const LoginPage()),); // Go back to LoginPage
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const LoginPage()),
+                  ); // Go back to LoginPage
                 },
-                child:
-
-                Text.rich(
+                child: Text.rich(
                   TextSpan(
                     children: [
                       TextSpan(
